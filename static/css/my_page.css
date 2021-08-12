@@ -140,11 +140,16 @@ body {
     display: flex;
 }
 
-.folder_area {
-    height: 250px;
+.folder_area_default {
+    display: none;
+}
+
+.folder_area_push {
     display: flex;
-    flex-direction: row;
+    width: 100%;
+    height: 10em;
     flex-wrap: wrap;
+    flex-direction: row;
     font-family: var(--btn-font);
 }
 
