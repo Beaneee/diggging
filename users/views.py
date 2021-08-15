@@ -221,17 +221,16 @@ def github_callback(request):
                 print(profile_json) # for test
                 user_name = profile_json.get("login", None)
                 if user_name is not None:
-                    email = profile_json.get("email")
-                    print(email) # for test
+                    # email = profile_json.get("email")
+                    # print(email) # for test
                     try:
-                        user = User.objects.get(email=email)
+                        user = User.objects.get(username = user_name)
                         print(user)
                         if user.login_method != User.LOGIN_GITHUB:
                             raise Exception(f"Please log in with: {user.login_method}")
                     except User.DoesNotExist:
                         user = User.objects.create(
                             username= user_name, 
-                            email=email, 
                             user_nickname= user_name, 
                             login_method=User.LOGIN_GITHUB,   
                         )
